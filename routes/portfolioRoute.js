@@ -6,6 +6,7 @@ const {
   Project,
   Contact,
   Experience,
+  SocialMedia
 } = require("../models/portfolioModel");
 
 //get all portfolio data
@@ -36,7 +37,7 @@ router.post("/update-intro", async (req, res) => {
       { _id: req.body._id },
       req.body,
       { new: true }
-    ); //return the new value not the old one
+    ); 
     res.status(200).send({
       data: intro,
       success: true,
@@ -183,31 +184,24 @@ router.post("/update-contact",async (req,res)=>{
     }
 })
 
-// admin login 
-router.post('/admin-login', async (req, res) =>{
-    try {
-        const user = await User.findOne({
-            username : req.body.username ,
-            password : req.body.password
-        })
-        if(user){
-            res.status(200).send({
-                data : user ,
-                success : true ,
-                message : " Login successfully "
-            })
-        }else{
-            res.status(200).send({
-                data : user ,
-                success : false ,
-                message : 'Username or Password is incorrect'
-            })
-        }
-    } catch (error) {
-        res.status(500).send(error)
-    }
-})
+// update socialMedia
 
+// router.post("/update-socialMedia", async (req,res) =>{
+//   try {
+//     const socialMedia = await SocialMedia.findOneAndUpdate({
+//       _id : req.body._id
+//     },
+//     req.body,
+//     {new : true});
+//     res.status(200).send({
+//       data : socialMedia,
+//       success : true,
+//       message : "Updated successsfully"
+//     })
+//   } catch (error) {
+//     res.status(500).send(error);
+//   }
+// })
 
 
 

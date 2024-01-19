@@ -115,10 +115,35 @@ const contactSchema = new mongoose.Schema({
   },
 });
 
+const socialMediaSchema = new mongoose.Schema({
+  github: {
+    type: String,
+    required: true,
+  },
+  linkedin: {
+      type: String,
+      required: true,
+  },
+  mail : {
+        type: String,
+        required: true,
+  },
+  instagram : {
+    type: String,
+    required: true,
+  },
+  facebook : {
+    type: String,
+    required: true,
+  }
+
+})
+
 module.exports = {
   Intro: mongoose.model("intros", introSchema),
   About: mongoose.model("abouts", aboutSchema),
   Experience: mongoose.model("experiences", experienceSchema),
   Project: mongoose.model("projects", projectsSchema),
+  SocialMedia : mongoose.model("socialMedia",socialMediaSchema),
   Contact: mongoose.model("contacts", contactSchema),
 };
