@@ -13,7 +13,8 @@ const login = require("./routes/Login");
 const register = require("./routes/Register");
 const forgetPassword = require("./routes/ForgetPassword");
 const resetPassword = require("./routes/ResetPassword");
- 
+const nodemailer = require("nodemailer");
+
 app.use(cors({
     origin:'*'
 }))
@@ -89,7 +90,6 @@ app.post("/register", async (req, res) => {
       res.status(500).json({
         message: "Server error",
       });
-   
     } 
   });
 
