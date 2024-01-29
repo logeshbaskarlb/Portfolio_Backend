@@ -126,7 +126,6 @@ app.post("/forgot-password", async (req, res) => {
           port:587,
           secure:false
       });
-  
       const info = await transporter.sendMail({
           from: process.env.MAIL_ID,
           to: email,
