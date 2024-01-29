@@ -4,12 +4,9 @@ const intro = [
       firstName: "Logesh",
       lastName: "Baskaran",
       caption: "I build things for the web",
-      description: `I'm a software engineer specializing in building (and occasionally designing) exceptional
-          websites and applications. Currently, I’m focused on creating solutions that provide seamless user
-          experiences.`,
+      description: "I'm a software engineer specializing in building (and occasionally designing) exceptional websites and applications. Currently, I’m focused on creating solutions that provide seamless user experiences.",
     },
   ];
-  
   const about = [
     {
       lottieURL:
@@ -26,7 +23,6 @@ const intro = [
           "MongoDB",
           "FireBase"
         ]
-  
     },
   ];
   

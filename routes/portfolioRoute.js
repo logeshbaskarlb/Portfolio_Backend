@@ -1,5 +1,4 @@
 const router = require("express").Router();
-const URL = process.env.MONGO_URL;
 const {
   Intro,
   About,
@@ -8,6 +7,10 @@ const {
   Experience,
   SocialMedia
 } = require("../models/portfolioModel");
+const bcrypt = require("bcryptjs");
+const URL = process.env.MONGO_URL;
+const { MongoClient } = require("mongodb");
+const jsonwebtoken = require("jsonwebtoken");
 
 //get all portfolio data
 router.get("/get-portfolio-data", async (req, res) => {
@@ -21,9 +24,9 @@ router.get("/get-portfolio-data", async (req, res) => {
     res.status(200).send({
       intro: intros[0],
       about: abouts[0],
-      project: projects,
+      projects: projects,
       contact: contacts[0],
-      experience: experiences,
+      experiences: experiences,
     });
   } catch (error) {
     res.status(500).send(error);
@@ -37,7 +40,7 @@ router.post("/update-intro", async (req, res) => {
       { _id: req.body._id },
       req.body,
       { new: true }
-    ); 
+    );
     res.status(200).send({
       data: intro,
       success: true,
@@ -202,6 +205,9 @@ router.post("/update-contact",async (req,res)=>{
 //     res.status(500).send(error);
 //   }
 // })
+
+
+
 
 
 

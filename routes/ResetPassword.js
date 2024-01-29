@@ -1,28 +1,29 @@
 const router = require("express").Router();
 const bcrypt = require("bcryptjs");
-const URL = process.env.MONGO_URL;
+const URL = process.env.DB;
 const { MongoClient } = require("mongodb");
 const jsonwebtoken = require("jsonwebtoken");
 const nodemailer = require("nodemailer");
+
 
 router.post("/reset-password/:token", async (req, res) => {
   try {
     const { password, confirmPassword } = req.body;
     const token = req.params.token;
-    jsonwebtoken.verify(token, async (err, decoded) => {
+    jsonwebtoken.verify(token, secretKey, async (err, decoded) => {
       try {
         if (err) {
           res.json({
-            message: " Error with token",
+            message: "Error with token",
           });
         } else {
           const hashedPassword = await bcrypt.hash(password, 10);
           const connection = await MongoClient.connect(URL);
-          const db = connection.db("Users");
+          const db = connection.db("users");
           const user = await db
             .collection("Registered")
             .findOne({ token: token });
-          await db.collection("Data").updateOne(
+          await db.collection("Registered").updateOne(
             { token },
             {
               $set: {
@@ -32,7 +33,7 @@ router.post("/reset-password/:token", async (req, res) => {
             }
           );
           connection.close();
-          res.send({ message: "Password changed successfully", user: user });
+          res.send({ message: "Password changed succesfully", user: user });
         }
       } catch (error) {
         console.log(error);
@@ -42,5 +43,4 @@ router.post("/reset-password/:token", async (req, res) => {
     console.log(error);
   }
 });
-
 module.exports = router;
