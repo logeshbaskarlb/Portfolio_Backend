@@ -5,12 +5,8 @@ const {
   Project,
   Contact,
   Experience,
-  SocialMedia
 } = require("../models/portfolioModel");
-const bcrypt = require("bcryptjs");
-const URL = process.env.MONGO_URL;
-const { MongoClient } = require("mongodb");
-const jsonwebtoken = require("jsonwebtoken");
+
 
 //get all portfolio data
 router.get("/get-portfolio-data", async (req, res) => {
