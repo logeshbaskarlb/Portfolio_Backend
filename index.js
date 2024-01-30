@@ -9,7 +9,7 @@ const jsonwebtoken = require("jsonwebtoken");
 const secretKey = process.env.JWT_SECRET;
 const portfolioRoute = require("./routes/portfolioRoute");
 const nodemailer = require("nodemailer");
-
+const dbConfig = require("./config/dbConfig")
 app.use(cors({
     origin:'*'
 }))
