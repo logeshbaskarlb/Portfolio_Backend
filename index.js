@@ -4,15 +4,10 @@ const app = express();
 const bcrypt = require("bcryptjs");
 require("dotenv").config();
 const URL = process.env.MONGO_URL;
-const dbConfig = require("./config/dbConfig")
 const { MongoClient } = require("mongodb");
 const jsonwebtoken = require("jsonwebtoken");
 const secretKey = process.env.JWT_SECRET;
 const portfolioRoute = require("./routes/portfolioRoute");
-const login = require("./routes/Login");
-const register = require("./routes/Register");
-const forgetPassword = require("./routes/ForgetPassword");
-const resetPassword = require("./routes/ResetPassword");
 const nodemailer = require("nodemailer");
 
 app.use(cors({
