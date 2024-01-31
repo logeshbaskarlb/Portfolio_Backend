@@ -18,7 +18,7 @@ app.use(express.json());
 
 app.use("/api/portfolio",portfolioRoute)
 
-// app.use("/",login)
+
 
 app.post("/login", async (req, res) => {
     try {
@@ -51,7 +51,7 @@ app.post("/login", async (req, res) => {
     }
   });
 
-// app.use("/register",register);
+
 app.post("/register", async (req, res) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Methods", "POST");
@@ -88,7 +88,6 @@ app.post("/register", async (req, res) => {
     } 
   });
 
-// app.use("/forget-Password",forgetPassword);
 
 app.post("/forgot-password", async (req, res) => {
     
@@ -135,7 +134,6 @@ app.post("/forgot-password", async (req, res) => {
   }
   });
 
-// app.use("reset-Password/:token",resetPassword);
 
 
 app.post("/reset-password/:token", async (req, res) => {
