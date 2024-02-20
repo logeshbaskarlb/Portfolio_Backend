@@ -10,6 +10,7 @@ const secretKey = process.env.JWT_SECRET;
 const portfolioRoute = require("./routes/portfolioRoute");
 const nodemailer = require("nodemailer");
 const dbConfig = require("./config/dbConfig")
+const CILENT_URL = process.env.CILENT_URL
 app.use(cors({
     origin:'*'
 }))
@@ -124,7 +125,7 @@ app.post("/forgot-password", async (req, res) => {
           from: process.env.MAIL_ID,
           to: email,
           subject: 'Reset password link',
-          html: `Click the following link to reset your password: ${process.env.CILENT_URL}/reset-password/${token}`
+          html: `Click the following link to reset your password: ${CILENT_URL}/reset-password/${token}`
       });
      console.log(info);
       res.status(200).json({ message: 'Password reset link sent successfully.' });
